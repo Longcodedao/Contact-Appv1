@@ -18,10 +18,19 @@ public class Contact {
     @ColumnInfo
     private String email;
 
+
     public Contact(String name, String mobilePhone, String email) {
         this.name = name;
         this.mobilePhone = mobilePhone;
         this.email = email;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getName() {
