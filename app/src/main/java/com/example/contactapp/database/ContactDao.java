@@ -1,8 +1,11 @@
-package com.example.contactapp;
+package com.example.contactapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.contactapp.database.Contact;
 
 import java.util.List;
 
@@ -10,7 +13,7 @@ import java.util.List;
 public interface ContactDao {
 
     @Query("SELECT * FROM my_contact")
-    List<Contact> getAll();
+    LiveData<List<Contact>> getAllContacts();
 
     @Insert
     void insert(Contact... contacts);

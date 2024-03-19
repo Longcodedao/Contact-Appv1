@@ -1,4 +1,4 @@
-package com.example.contactapp;
+package com.example.contactapp.database;
 
 import android.content.Context;
 

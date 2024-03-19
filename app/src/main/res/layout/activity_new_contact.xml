@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#077FFF"
+            app:layout_anchor="@+id/appBarLayout"
+            app:menu="@menu/create_contact"
+            app:navigationIcon="@drawable/baseline_close_24"
+            app:title="Create new Contact"
+            app:titleTextColor="#F1F1F1">
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:layout_below="@+id/appBarLayout"
+        android:background="#033D9F"
+        app:srcCompat="@drawable/baseline_person_24_white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:backgroundTint="@color/white_ldark"
+        android:paddingTop="15dp"
+        android:layout_below="@+id/imageView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="15dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/baseline_person_24_gray">
+
+            </ImageView>
+
+            <EditText
+                android:id="@+id/editTextFirstName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="18dp"
+                android:layout_marginEnd="50dp"
+                android:hint="First Name" /> <!-- Adjust hint as needed -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/editTextLastname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="18dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="65dp"
+                android:hint="Last Name" /> <!-- Adjust hint as needed -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="15dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/baseline_phone_24_gray">
+
+            </ImageView>
+
+            <EditText
+                android:id="@+id/editPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="18dp"
+                android:layout_marginEnd="50dp"
+                android:hint="Phone" /> <!-- Adjust hint as needed -->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="15dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/baseline_email_24">
+
+            </ImageView>
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="18dp"
+                android:layout_marginEnd="50dp"
+                android:hint="Email" /> <!-- Adjust hint as needed -->
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

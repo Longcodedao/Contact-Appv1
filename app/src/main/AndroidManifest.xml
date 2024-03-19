@@ -13,7 +13,15 @@
         android:theme="@style/Theme.ContactApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.NewContact"
+            android:exported="false" />
+        <activity
+            android:name=".NewContactActivity"
+            android:exported="false"
+            android:label="@string/title_activity_new_contact"
+            android:theme="@style/Theme.ContactApp" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

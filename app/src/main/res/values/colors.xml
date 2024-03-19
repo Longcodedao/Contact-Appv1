@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_ldark">#B3B3B3</color>
+    <color name="add_contact">#0070CA</color>
 </resources>
