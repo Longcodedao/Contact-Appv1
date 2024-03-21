@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_ldark">#B3B3B3</color>
     <color name="add_contact">#0070CA</color>
+
+    <color name="primaryColor">#077FFF</color>
+    <color name="primaryDarkColor">#2B2B2B</color>
+    <color name="accentColor">#077FFF</color>
+
 </resources>

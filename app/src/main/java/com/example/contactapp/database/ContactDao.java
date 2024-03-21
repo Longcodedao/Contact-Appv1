@@ -17,4 +17,7 @@ public interface ContactDao {
 
     @Insert
     void insert(Contact... contacts);
+
+    @Query("SELECT * FROM my_contact where name LIKE :query OR mobilePhone LIKE :query OR email LIKE :query")
+    LiveData<List<Contact>> searchContacts(String query);
 }

@@ -12,16 +12,21 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/contact_menu"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#077FFF"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme"
             app:layout_anchor="@+id/appBarLayout"
             app:menu="@menu/contact_menu"
             app:navigationIcon="@drawable/baseline_menu_24"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:title="Contact"
             app:titleTextColor="#F1F1F1">
 
+
         </com.google.android.material.appbar.MaterialToolbar>
+
 
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -42,7 +47,6 @@
         android:id="@+id/rv_contacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F1F1F1"
         android:layout_marginTop="?attr/actionBarSize"/>
 
 

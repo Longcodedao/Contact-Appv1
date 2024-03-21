@@ -6,9 +6,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.widget.SearchView;
 
+import com.example.contactapp.R;
 import com.example.contactapp.database.AppDatabase;
 import com.example.contactapp.database.Contact;
 import com.example.contactapp.adapters.ContactAdapter;
@@ -27,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ContactViewModel contactViewModel;
-    private AppDatabase appDatabase;
-    private ContactDao contactDao;
+//    private AppDatabase appDatabase;
+//    private ContactDao contactDao;
 
 
     @Override
@@ -38,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View viewRoot = binding.getRoot();
         setContentView(viewRoot);
-
+        setSupportActionBar(binding.contactMenu);
 
         binding.rvContacts.setLayoutManager(new LinearLayoutManager(this));
         contactList = new ArrayList<>();
@@ -49,32 +57,15 @@ public class MainActivity extends AppCompatActivity {
         contactViewModel.getContactList().observe(this, new Observer<List<Contact>>() {
             @Override
             public void onChanged(List<Contact> contacts) {
+//                contactList.addAll(contacts);
+                // Clear the existing list
+                contactList.clear();
+
+                // Add all contacts from the new list
                 contactList.addAll(contacts);
                 contactAdapter.notifyDataSetChanged();
             }
         });
-
-
-
-//        contactList.add(new Contact("Nguyen Van A", "0907042194", "a@gmail.com"));
-//        contactList.add(new Contact("Nguyen Van B", "0907042194", "b@gmail.com"));
-//        contactList.add(new Contact("Nguyen Van C", "0907042194", "c@gmail.com"));
-//        contactAdapter.notifyDataSetChanged();
-
-
-//        AsyncTask.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                appDatabase = AppDatabase.getInstance(getApplicationContext());
-//                contactDao = appDatabase.contactDao();
-//
-//                contactDao.insert(new Contact ("Nguyen Van A",
-//                        "092334243",
-//                        "a@gmail.com"));
-//
-//
-//            }
-//        });
 
         binding.addContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,5 +81,62 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.contact_menu, menu);
 
+        MenuItem searchItem = menu.findItem(R.id.searchBar);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        // Get the icon from the menu item
+        Drawable searchIcon = searchItem.getIcon();
+
+        // Set the icon tint color to white
+        if (searchIcon != null) {
+            searchIcon.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            searchItem.setIcon(searchIcon);
+        }
+        // Customize the SearchView as needed
+        searchView.setIconifiedByDefault(true); // Expand the SearchView by default
+        searchView.setQueryHint("Search"); // Set the hint text
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle query submission (if needed)
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter your list based on newText and update the UI accordingly
+                // For example, you can call a method in your ViewModel to perform the search
+                contactViewModel.searchContacts(newText).observe(MainActivity.this, new Observer<List<Contact>>() {
+                    @Override
+                    public void onChanged(List<Contact> contacts) {
+                        // Clear the existing list
+                        contactList.clear();
+
+                        // Add all contacts from the new list
+                        contactList.addAll(contacts);
+                        contactAdapter.notifyDataSetChanged();
+                    }
+                });
+                return true;
+            }
+        });
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle menu item clicks
+
+        return super.onOptionsItemSelected(item);
+
+
+    }
 }
